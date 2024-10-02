@@ -1,5 +1,4 @@
 .button {
-		font-weight: bold;
 		font-family: system-ui;
 		font-size: 20px;
 		text-decoration: none;
@@ -10,9 +9,45 @@
 	background-color: #F3B0F2;
 	border: 5px solid gray;
 	padding: 10px;
-	margin: 10px;
+	margin: 10px 30px 10px 30px;
 }
 
 .navbar {
 	height: 50px;
+}
+
+.image-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            align-items: center;
+
+}
+
+img {
+  margin: 5px;
+  border: 1px solid #ccc;
+  float: left;
+  width: 20%;
+}
+
+td[colspan="1"] {
+	width: 20%;
+}
+
+td[colspan="2"] {
+	width: 40%;
+}
+
+td[colspan="3"] {
+	width: 60%;
+}
+
+td[colspan="4"] {
+	width: 80%;
+}
+
+td[colspan="5"] {
+	width: 100%;
 }
