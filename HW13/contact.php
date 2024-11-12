@@ -29,15 +29,14 @@
   </div>
 </nav>
 <!--END HEADING-->
-    <div align="center" bgcolor="c0e4f5"><h2>Please fill out the contact form below</h2></div>
+	<?php
+		if (!isset($_POST['submit']))
+		{
+			echo '<div align="center" bgcolor="c0e4f5"><h2>Please fill out the contact form below</h2></div>
 
-	<form action="contact.php" method="post">
-	<!--validation stuff 10/17-->
-	<div class="container">
-		<?php
-			if (!isset($_POST['submit']))
-			{
-		echo '
+		<form action="" method="post">
+		<!--validation stuff 10/17-->
+		<div class="container">
 			<div class="form-group" id="firstNameGroup">
 				<label class="control-label">First Name:</label>
 				<input type="text" class="form-control" id="firstName" name="firstName">
@@ -71,46 +70,48 @@
 			<div class="form-group" id="commentsGroup">
 				<label class="control-label">Comments:</label>
 				<textarea id="comments" class="form-control"></textarea>
-				<span class="help-block" id="commentsStatus" name="comments"></span>
+				<span class="help-block" id="commentsStatus"></span>
 			</div>
 		</div>
 			<button class="btn btn-default" type="submit" name="submit" value="submit">Submit</button>
 			</form>';
+				
 		}
-		else{
-		$firstname=$_POST['firstName'];
-		$lastname=$_POST['lastName'];
-		$email=$_POST['email'];
-		echo "<h2>Please fill out form below</h2>";
-		echo "<p>First Name: $firstname</p>";
-		echo "<p>Last Name: $lastname</p>";
-		echo "<p>Email: $email</p>";
+		else
+		{
+			$firstname=$_POST['firstName'];
+			$lastname=$_POST['lastName'];
+			$email=$_POST['email'];
+			echo '<h1>Please fill out the contact form below</h1>';
+			echo "<p>First Name: $firstname</p>";
+			echo "<p>Last Name: $lastname</p>";
+			echo "<p>Email: $email</p>";
 		}
-	?>
-	
-	<!--
-    <div colspan="5" class="box">
-		<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">School email</h3>
-  </div>
-  <div class="panel-body">
-    zoe.rodriguez2@my.utsa.edu
-  </div>
+		?>
 			
-	</div>
-	<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">GitHub</h3>
-  </div>
-  <div class="panel-body">
-    zoerod9
-  </div>
-	</div>
-		<div><p>I personally prefer to not be spoken to but professionally, please feel free to contact me anytime.</p></div>
-		<img class="image" src="images/hide-the-pain-harold-phone-meme-2.jpg"/>
-	</div>
--->
+<!--
+//    <div colspan="5" class="box">
+//		<div class="panel panel-default">
+//  <div class="panel-heading">
+//    <h3 class="panel-title">School email</h3>
+//  </div>
+//  <div class="panel-body">
+//    zoe.rodriguez2@my.utsa.edu
+//  </div>
+//			
+//	</div>
+//	<div class="panel panel-default">
+//  <div class="panel-heading">
+//    <h3 class="panel-title">GitHub</h3>
+//  </div>
+//  <div class="panel-body">
+//    zoerod9
+//  </div>
+//	</div>
+//		<div><p>I personally prefer to not be spoken to but professionally, please feel free to contact me anytime.</p></div>
+//		<img class="image" src="images/hide-the-pain-harold-phone-meme-2.jpg"/>
+//	</div>
+//-->
 </body>
 </html>
 <script src="assets/js/formValidation.js"></script>
