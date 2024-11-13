@@ -82,10 +82,16 @@
 			$firstname=$_POST['firstName'];
 			$lastname=$_POST['lastName'];
 			$email=$_POST['email'];
+			$phone=$_POST['phone'];
+			$username=$_POST['username'];
+			$password=$_POST['password'];
 			echo '<h1>Please fill out the contact form below</h1>';
 			echo "<p>First Name: $firstname</p>";
 			echo "<p>Last Name: $lastname</p>";
 			echo "<p>Email: $email</p>";
+			echo "<p>Phone: $phone</p>";
+			echo "<p>Username: $username</p>";
+			echo "<p>Password: $password</p>";
 		}
 		?>
 			
