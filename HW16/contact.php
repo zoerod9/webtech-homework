@@ -282,30 +282,33 @@ if ( !isset( $_POST[ 'submit' ] ) ) {
   $password = $_POST[ 'password' ];
   if ( $password == NULL )
     $errors[] = "passwordErr=null";
-	else
+  else
     $_SESSION[ 'password' ] = $password; //data was not null, store in session super global
 
   // ****COMMENTS****
   $comments = $_POST[ 'comments' ];
-  if ( $comments == NULL )
+  if ( $comments == NULL ) {
     $errors[] = "commentsErr=null";
-  else
+  } else {
     $_SESSION[ 'comments' ] = $comments; //data was not null, store in session super global
-}
-	// Errors always has at least 1 member -- string "Array"
-	// so checking for length greater than 1
-if ( count( $errors ) > 1 ) {
-  $errorString = implode( "&", $errors );
-  header( "Location: contact.php?$errorString" );
-} else {
-  echo '<h1>Please fill out the contact form below</h1>';
-  echo "<p>First Name: $firstname</p>";
-  echo "<p>Last Name: $lastname</p>";
-  echo "<p>Email Address: $email</p>";
-	echo "<p>Phone Number: $phonenumber</p>";
-	echo "<p>Username: $username</p>";
-	echo "<p>Password: $password</p>";
-	echo "<p>Comment: $comments</p>";
+  }
+
+  // Errors always has at least 1 member -- string "Array"
+  // so checking for length greater than 1
+  if ( count( $errors ) > 1 ) {
+    $errorString = implode( "&", $errors );
+    header( "Location: contact.php?$errorString" );
+  } else {
+    echo '<h1>Please fill out the contact form below</h1>';
+    echo "<p>First Name: $firstname</p>";
+    echo "<p>Last Name: $lastname</p>";
+    echo "<p>Email Address: $email</p>";
+    echo "<p>Phone Number: $phonenumber</p>";
+    echo "<p>Username: $username</p>";
+    echo "<p>Password: $password</p>";
+    echo "<p>Comment: $comments</p>";
+  }
+
 }
 
 ?>

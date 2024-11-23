@@ -43,14 +43,14 @@ switch($page){
 			break;
 }
 }
-else
+else{
 	
 		echo '<li class="active"><a href="index.php">Home</a></li>';
 		echo '<li><a href="index.php?page=work">Work Info</a></li>';
 		echo '<li><a href="index.php?page=hobbies">Hobbies</a></li>';
 		echo '<li><a href="index.php?page=movies">Movies</a></li>';
 		echo '<li><a href="index.php?page=contact">Contact</a></li>';
-
+}
  echo ' </ul>';
 echo '</div>';
 ?>

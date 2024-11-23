@@ -6,6 +6,15 @@
 <?php
 // create session for this client connection
 session_start(); // on server's temp location, create file that can be written to for this client
+$errors[] = array();
+$firstname = NULL;
+	$lastname = NULL;
+	$email = NULL;
+	$phonenumber = NULL;
+	$username = NULL;
+	$password = NULL;
+	$comments = NULL;
+	
 if ( !isset( $_POST[ 'submit' ] ) ) {
   echo '<div align="center" bgcolor="c0e4f5"><h2>Please fill out the contact form below</h2></div>';
   echo '<div class="container">';
@@ -224,8 +233,6 @@ if ( !isset( $_POST[ 'submit' ] ) ) {
   echo '</div>';
 
 } else {
-  $errors[] = array();
-
   // ****FIRST NAME****
   $firstname = $_POST[ 'firstName' ];
   // check for null
@@ -282,7 +289,7 @@ if ( !isset( $_POST[ 'submit' ] ) ) {
   $password = $_POST[ 'password' ];
   if ( $password == NULL )
     $errors[] = "passwordErr=null";
-	else
+  else
     $_SESSION[ 'password' ] = $password; //data was not null, store in session super global
 
   // ****COMMENTS****
@@ -292,29 +299,29 @@ if ( !isset( $_POST[ 'submit' ] ) ) {
   else
     $_SESSION[ 'comments' ] = $comments; //data was not null, store in session super global
 }
-	// Errors always has at least 1 member -- string "Array"
-	// so checking for length greater than 1
+// Errors always has at least 1 member -- string "Array"
+// so checking for length greater than 1
 if ( count( $errors ) > 1 ) {
   $errorString = implode( "&", $errors );
   header( "Location: contact.php?$errorString" );
 } else {
-	
-	//in order to connect to DB, we need host, db_user, db_password, db name
-	$dblink = new mysqli("localhost", "webuser", "k29ro10_kUDajVZw", "contact_data");
-	//set up sql to insert data
-	$sql="Insert into `contact_info` (`first_name`, `last_name`, `email`, `phone`, `username`, `password`, `comments`) values ('$firstname', '$lastname', '$email', '$phone', `$username`, `$password`, `$comments')";
-	//call the query method for mysqli object in $dblink, or generate an error if the query is not successfull
-	$dblink->query($sql) or
-		die("<h2>Something went wrong with $sql<br>".$dblink->error."</h2>");
-	echo '<div class="section-title"><h2>Data sent ot database!</h2></div>';
-//  echo '<h1>Please fill out the contact form below</h1>';
-//  echo "<p>First Name: $firstname</p>";
-//  echo "<p>Last Name: $lastname</p>";
-//  echo "<p>Email Address: $email</p>";
-//	echo "<p>Phone Number: $phonenumber</p>";
-//	echo "<p>Username: $username</p>";
-//	echo "<p>Password: $password</p>";
-//	echo "<p>Comment: $comments</p>";
+
+  //in order to connect to DB, we need host, db_user, db_password, db name
+  $dblink = new mysqli( "localhost", "webuser", "k29ro10_kUDajVZw", "contact_data" );
+  //set up sql to insert data
+  $sql = "Insert into `contact_info` (`first_name`, `last_name`, `email`, `phone`, `username`, `password`, `comments`) values ('$firstname', '$lastname', '$email', '$phonenumber', '$username', '$password', '$comments')";
+  //call the query method for mysqli object in $dblink, or generate an error if the query is not successfull
+  $dblink->query( $sql )or
+  die( "<h2>Something went wrong with $sql<br>" . $dblink->error . "</h2>" );
+  echo '<div class="section-title"><h2>Data sent ot database!</h2></div>';
+  //  echo '<h1>Please fill out the contact form below</h1>';
+  //  echo "<p>First Name: $firstname</p>";
+  //  echo "<p>Last Name: $lastname</p>";
+  //  echo "<p>Email Address: $email</p>";
+  //	echo "<p>Phone Number: $phonenumber</p>";
+  //	echo "<p>Username: $username</p>";
+  //	echo "<p>Password: $password</p>";
+  //	echo "<p>Comment: $comments</p>";
 }
 
 ?>
